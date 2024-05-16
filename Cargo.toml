@@ -1,0 +1,10 @@
+[package]
+name = "graphster"
+version = "0.0.0-a0"
+edition = "2021"
+description = "High-performance DataGraph Library"
+license = "BSD-3-Clause"
+readme = "README.md"
+
+[dependencies]
+roaring = "0.10.4"
