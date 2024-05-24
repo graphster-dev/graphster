@@ -1,8 +1,16 @@
 name: Lint Pull Request
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - src/**
+      - .github/workflows/test.yml
   pull_request:
     branches: [main]
+    paths:
+      - src/**
+      - .github/workflows/test.yml
 
 jobs:
   lint:
@@ -15,4 +23,4 @@ jobs:
         with:
           components: clippy
       - name: Lint with clippy
-        run: cargo clippy --all-targets --all-features -- -D warnings
+        run: make lint

@@ -1,4 +1,4 @@
-name: Format Pull Request
+name: Run Tests
 
 on:
   push:
@@ -13,14 +13,13 @@ on:
       - .github/workflows/test.yml
 
 jobs:
-  format:
+  test:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - name: Set up Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          components: rustfmt
-      - name: Format with rustfmt
-        run: cargo fmt -- --check
+        uses: dtolnay/rust-toolchain@nightly
+      - name: Run tests
+        run: make test
+      - name: Run doc-tests
+        run: make test-doc
